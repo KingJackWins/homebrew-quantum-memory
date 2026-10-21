@@ -7,15 +7,15 @@ class QuantumAgentOs < Formula
   # Deferral keeps the public key out of formula metadata. Redaction hides output,
   # not curl arguments. Download and unpack precede Homebrew's install-hook clear.
   # Homebrew clears sensitive variables again before post-install and formula test.
-  # asset: quantum-agent-os-0.5.19-163f285c7d6e.tar.gz
+  # asset: quantum-agent-os-0.5.21-a0178fcb9eb9.tar.gz
   # Evaluation can detect absence only: Homebrew defers every present sensitive value.
   # Empty/invalid licences must be rejected by the download provider. No formula code runs at
   # fetch: Homebrew expands deferred headers only for its own strategy classes, never a subclass.
   odie "Quantum Memory needs your licence key before Homebrew can read or download it. The key is not set in this terminal, so Homebrew stopped before downloading Quantum Memory. If Quantum Memory is not installed yet, or you are reinstalling, ask Jack. If you installed Quantum Memory with a licence key, save that licence first if you have not already: run quantum license-import --stdin < licence-file, replacing licence-file with the licence file Jack sent you. Then run quantum license-status. If it says your download access ends on a date, run quantum update. If it says anything else, ask Jack. If you installed Quantum Memory another way, ask Jack." unless ENV.key?("HOMEBREW_QUANTUM_LICENCE_KEY")
-  url "https://dashboard.quantummemory.ai/api/qaos/download/quantum-agent-os-0.5.19-163f285c7d6e.tar.gz",
+  url "https://dashboard.quantummemory.ai/api/qaos/download/quantum-agent-os-0.5.21-a0178fcb9eb9.tar.gz",
       headers: ["Authorization: Bearer #{ENV.fetch("HOMEBREW_QUANTUM_LICENCE_KEY", nil)}"]
-  sha256 "163f285c7d6e111308f86dc2a8fcc1da7ea7eb7f072e489089e9132d3371262c"
-  version "0.5.19"
+  sha256 "a0178fcb9eb9b55d4530750339f2ef72430800f00266fba678b76754667c14a1"
+  version "0.5.21"
   license :cannot_represent   # proprietary; see LICENSE in the asset
 
   # THE PACK IS SINGLE-ARCHITECTURE, AND THIS IS THE HONEST CONSEQUENCE. The release vendors
@@ -26,7 +26,7 @@ class QuantumAgentOs < Formula
   # the customer's first command. Build on the other arch to ship the other arch.
   depends_on arch: :arm64
   # herdr is the ORCHESTRATION SURFACE the whole product is driven from (founder executive
-  # order 2026-08-19: the entire fleet is on herdr, tmux is legacy), so one `brew install`
+  # order 2026-08-19: the entire fleet is on herdr), so one `brew install`
   # delivers both. A BARE NAME is correct here: herdr is in homebrew-core, and only a
   # dependency on ANOTHER third-party tap needs the fully-qualified user/repo/formula form.
   #
@@ -52,7 +52,7 @@ class QuantumAgentOs < Formula
 
   def caveats
     <<~EOS
-      Quantum Memory 0.5.19 is installed. Finish setup with Jack before using it.
+      Quantum Memory 0.5.21 is installed. Finish setup with Jack before using it.
       Save your licence once so that quantum update works:
         quantum license-import --stdin < licence-file
       Replace licence-file with the licence file Jack sent you.

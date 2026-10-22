@@ -36,6 +36,9 @@ class QuantumAgentOs < Formula
   # code (the transport adapter refuses a protocol it does not speak), not in this line.
   depends_on "herdr"
   depends_on "node"
+  # Finish notifications (`quantum install` links the herdr plugin and builds a branded copy of this
+  # notifier with the Quantum Memory icon). homebrew-core, so a bare name, like herdr.
+  depends_on "terminal-notifier"
 
   def install
     libexec.install Dir["*"]

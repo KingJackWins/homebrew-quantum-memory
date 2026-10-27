@@ -7,15 +7,15 @@ class QuantumAgentOs < Formula
   # Deferral keeps the public key out of formula metadata. Redaction hides output,
   # not curl arguments. Download and unpack precede Homebrew's install-hook clear.
   # Homebrew clears sensitive variables again before post-install and formula test.
-  # asset: quantum-agent-os-0.5.26-d06520304c39.tar.gz
+  # asset: quantum-agent-os-0.5.27-bf1c91794cde.tar.gz
   # Evaluation can detect absence only: Homebrew defers every present sensitive value.
   # Empty/invalid licences must be rejected by the download provider. No formula code runs at
   # fetch: Homebrew expands deferred headers only for its own strategy classes, never a subclass.
   odie "Quantum Memory needs your licence key before Homebrew can read or download it. The key is not set in this terminal, so Homebrew stopped before downloading Quantum Memory. If Quantum Memory is not installed yet, or you are reinstalling, ask Jack. If you installed Quantum Memory with a licence key, save that licence first if you have not already: run quantum license-import --stdin < licence-file, replacing licence-file with the licence file Jack sent you. Then run quantum license-status. If it says your download access ends on a date, run quantum update. If it says anything else, ask Jack. If you installed Quantum Memory another way, ask Jack." unless ENV.key?("HOMEBREW_QUANTUM_LICENCE_KEY")
-  url "https://dashboard.quantummemory.ai/api/qaos/download/quantum-agent-os-0.5.26-d06520304c39.tar.gz",
+  url "https://dashboard.quantummemory.ai/api/qaos/download/quantum-agent-os-0.5.27-bf1c91794cde.tar.gz",
       headers: ["Authorization: Bearer #{ENV.fetch("HOMEBREW_QUANTUM_LICENCE_KEY", nil)}"]
-  sha256 "d06520304c39cc71edc212eabdc259d47cd696da1a468ba0f1df0e3b21b68029"
-  version "0.5.26"
+  sha256 "bf1c91794cde4bb4f8975585bd4dbf03c96629dd5175b1a4c92c113abf09a1ad"
+  version "0.5.27"
   license :cannot_represent   # proprietary; see LICENSE in the asset
 
   # THE PACK IS SINGLE-ARCHITECTURE, AND THIS IS THE HONEST CONSEQUENCE. The release vendors
@@ -55,7 +55,7 @@ class QuantumAgentOs < Formula
 
   def caveats
     <<~EOS
-      Quantum Memory 0.5.26 is installed. Finish setup with Jack before using it.
+      Quantum Memory 0.5.27 is installed. Finish setup with Jack before using it.
       Save your licence once so that quantum update works:
         quantum license-import --stdin < licence-file
       Replace licence-file with the licence file Jack sent you.
